@@ -8,6 +8,7 @@
 
 		<!-- Bootstrap -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/body.css" rel="stylesheet">
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,22 +27,25 @@
 		</nav>
 		
 		<div class="container">
-	    	<p><div class="container bg-success">
-	    		<p class="text-success">完了しました！</p>
-	    		<ul>
-	    			<li class="text-success">No.27のTodoを更新しました。</li>
-	    		</ul>
-			</div></p>
-			
-		
-			<p><div class="container bg-warning">
-	    		<p class="text-danger">エラーが発生しました！</p>
+	    	<div id="alert" class="alert alert-success fade in">
+	            <a href="#" class="close" data-dismiss="alert"
+	                aria-label="close">×</a>
+	            <b class="text-success"><font size="3">完了しました！</font></b>
+		    		<ul>
+		    			<li class="text-success">No.27のTodoを更新しました。</li>
+		    		</ul>
+	        </div>
+        
+			<div id="alert" class="alert alert-danger fade in">
+            	<a href="#" class="close" data-dismiss="alert"
+                	aria-label="close">×</a>
+	    		<b class="text-danger"><font size="3">エラーが発生しました！</font></b>
 	    		<ul>
 	    			<li class="text-danger">題名は必須入力です。</li>
 	    			<li class="text-danger">題名は100文字以内にしてください。</li>
 	    			<li class="text-danger">起源は「YYYY/MM/DD」形式で入力してください。</li>
 	    		</ul>
-			</div></p>
+			</div>
 			
 			<div class="container">
 			<p>更新フォーム
