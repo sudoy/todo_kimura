@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-<jsp:include page="todo_headder.jsp" />
+<jsp:include page="todo_header.jsp" />
 	<b>登録フォーム</b>
 	<hr>
 	<div class="container">

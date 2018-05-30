@@ -1,41 +1,37 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import="java.sql.*,javax.naming.*,javax.sql.*, java.text.*" %>
 
-<jsp:include page="todo_headder.jsp" />
+<jsp:include page="todo_header.jsp" />
 	<div class="container">
 		<table class="table">
 			<tr>
 				<th>#</th>
 				<th>題名</th>
+				<th>詳細</th>
 				<th>重要度</th>
 				<th>期限</th>
 			</tr>
-			<tr>
-				<td>1</td>
-				<td><a href="update.html">テストテスト</a></td>
-				<td>★★★</td>
-				<td>2018/05/29</td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td><a href="update.html">テストテスト</a></td>
-				<td>★</td>
-				<td>2018/05/29</td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td><a href="update.html">テストテスト</a></td>
-				<td>★★★</td>
-				<td>2018/05/30</td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td><a href="update.html">テストテスト</a></td>
-				<td>★★</td>
-				<td></td>
-			</tr>
-		</table>
 
-		<p><a href="entry.html"><button type="button" class="btn btn-info">追加</button></a></p>
+<%
+ResultSet rs = (ResultSet)request.getAttribute("rs");
 
-	</div><!-- /container -->
+		while(rs.next()){
+%>
+	<tr>
+		<td><%=rs.getString("todo_id") %></td>
+		<td><a href="update.html"><%=rs.getString("title") %></a></td>
+		<td><%=rs.getString("detail") %></td>
+		<td><%=rs.getString("importance") %></td>
+		<td><%=rs.getString("deadline") %></td>
+	</tr>
+<%
+		}
+%>
+
+</table>
+
+	<p><a href="entry.html"><button type="button" class="btn btn-info">追加</button></a></p>
+
+</div><!-- /container -->
+
 <jsp:include page="todo_footter.jsp" />
