@@ -17,9 +17,9 @@ public class DBUtils {
 		//データベースの接続を確立
 		Context initContext = new InitialContext();
 		Context envContext = (Context)initContext.lookup("java:/comp/env");
-		DataSource todolist_kimura = (DataSource)envContext.lookup("jdbc/mysql");
+		DataSource ds = (DataSource)envContext.lookup("todolist_kimura");
 
-		return todolist_kimura.getConnection();
+		return ds.getConnection();
 
 	}
 
