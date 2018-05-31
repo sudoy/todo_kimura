@@ -14,7 +14,7 @@
 
 	<c:forEach var="todo" items="${list}">
 	<tr>
-		<td>${todo.todo_id}</td>
+		<td>${todo.todoId}</td>
 		<td><a href="update.html">${todo.title}</a></td>
 		<td>${HTMLUtils.formatImportance(todo)}</td>
 		<td>${HTMLUtils.getDeadline(todo)}</td>

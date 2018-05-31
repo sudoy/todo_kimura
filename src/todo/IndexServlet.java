@@ -44,12 +44,12 @@ public class IndexServlet extends HttpServlet {
 			List<Todo> list = new ArrayList<>();
 
 			while(rs.next()) {
-				int todo_id = rs.getInt("todo_id");
+				int todoId = rs.getInt("todo_id");
 				String title = rs.getString("title");
 				String detail = rs.getString("detail");
 				int importance = rs.getInt("importance");
 				Date deadline = rs.getDate("deadline");
-				Todo t = new Todo(todo_id,title,detail,importance,deadline);
+				Todo t = new Todo(todoId,title,detail,importance,deadline);
 
 				list.add(t);
 			}
@@ -57,7 +57,6 @@ public class IndexServlet extends HttpServlet {
 			//JavaBeansをJSPへ渡す
 			req.setAttribute("list", list);
 
-			req.setAttribute("rs", rs);
 			//foward→index.jsp
 			getServletContext().getRequestDispatcher("/WEB-INF/index.jsp")
 				.forward(req, resp);
