@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ page import="java.sql.*,javax.naming.*,javax.sql.*, java.text.*, todo.utils.HTMLUtils" %>
+<%@ page import="todo.utils.HTMLUtils" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:include page="todo_header.jsp" />
