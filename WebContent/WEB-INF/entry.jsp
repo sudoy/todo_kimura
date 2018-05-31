@@ -46,4 +46,4 @@
 			</form>
 		</div>
 	</div><!-- /container -->
-<jsp:include page="todo_footter.jsp" />
+<jsp:include page="todo_footer.jsp" />

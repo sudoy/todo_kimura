@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ page import="java.sql.*,javax.naming.*,javax.sql.*, java.text.*" %>
+<%@ page import="java.sql.*,javax.naming.*,javax.sql.*, java.text.*, todo.utils.HTMLUtils" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:include page="todo_header.jsp" />
 	<div class="container">
@@ -7,26 +8,18 @@
 			<tr>
 				<th>#</th>
 				<th>題名</th>
-				<th>詳細</th>
 				<th>重要度</th>
 				<th>期限</th>
 			</tr>
 
-<%
-ResultSet rs = (ResultSet)request.getAttribute("rs");
-
-		while(rs.next()){
-%>
+	<c:forEach var="todo" items="${list}">
 	<tr>
-		<td><%=rs.getString("todo_id") %></td>
-		<td><a href="update.html"><%=rs.getString("title") %></a></td>
-		<td><%=rs.getString("detail") %></td>
-		<td><%=rs.getString("importance") %></td>
-		<td><%=rs.getString("deadline") %></td>
+		<td>${todo.todo_id}</td>
+		<td><a href="update.html">${todo.title}</a></td>
+		<td>${HTMLUtils.formatImportance(todo)}</td>
+		<td>${HTMLUtils.getDeadline(todo)}</td>
 	</tr>
-<%
-		}
-%>
+	</c:forEach>
 
 </table>
 
@@ -34,4 +27,4 @@ ResultSet rs = (ResultSet)request.getAttribute("rs");
 
 </div><!-- /container -->
 
-<jsp:include page="todo_footter.jsp" />
+<jsp:include page="todo_footer.jsp" />
