@@ -1,4 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!doctype html>
 <html lang="ja">
@@ -36,14 +37,17 @@
 				</ul>
 			</div>
 
-			<div id="alert" class="alert alert-danger fade in">
-				<a href="#" class="close" data-dismiss="alert"
-					aria-label="close">×</a>
-				<b class="text-danger">エラーが発生しました！</b>
-				<ul>
-					<li class="text-danger">題名は必須入力です。</li>
-					<li class="text-danger">題名は100文字以内にしてください。</li>
-					<li class="text-danger">期限は「YYYY/MM/DD」形式で入力してください。</li>
-				</ul>
-			</div>
+			<c:if test="${errors.size() > 0}">
+				<div id="alert" class="alert alert-danger fade in">
+					<a href="#" class="close" data-dismiss="alert"
+						aria-label="close">×</a>
+					<b class="text-danger">エラーが発生しました！</b>
+
+					<ul>
+						<c:forEach var="error" items="${errors}">
+							<li>${errors}</li>
+						</c:forEach>
+					</ul>
+				</div>
+			</c:if>
 		</div>
