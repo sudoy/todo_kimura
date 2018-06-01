@@ -36,7 +36,7 @@
 				<label for="deadline" class="col-sm-2 control-label">期限</label>
 				<div class="form-group">
 					<div class="col-sm-9">
-						<input type="text" class="form-control" id="deadline" name="deadline" placeholder="期限" value="${t.deadline}">
+						<input type="text" class="form-control" id="deadline" name="deadline" placeholder="期限" value="${HTMLUtils.formatDeadline(t.deadline)}">
 					</div>
 				</div>
 

@@ -39,4 +39,15 @@ public class HTMLUtils {
 			return "";
 		}
 	}
+
+	public static String formatDeadline(Date deadline) {
+		Todo todo = new Todo(0, null, null, 0, deadline);
+		deadline = todo.getDeadline();
+		if(deadline == null) {
+			return "";
+		}
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		return sdf.format(deadline);
+	}
+
 }
