@@ -17,7 +17,7 @@
 		<td>${todo.todoId}</td>
 		<td><a href="update.html?todoId=${todo.todoId}">${todo.title}</a></td>
 		<td>${HTMLUtils.formatImportance(todo)}</td>
-		<td>${HTMLUtils.getDeadline(todo)}</td>
+		<td>${HTMLUtils.formatDeadline(todo.deadline)}</td>
 	</tr>
 	</c:forEach>
 

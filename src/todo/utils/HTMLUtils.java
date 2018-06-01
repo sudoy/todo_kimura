@@ -21,14 +21,16 @@ public class HTMLUtils {
 
 	}
 
-	public static String getDeadline(Todo todo) {
-		Date deadline = todo.getDeadline();
+	public static String formatDeadline(Date deadline) {
+		Todo todo = new Todo(0, null, null, 0, deadline);
+		deadline = todo.getDeadline();
 		if(deadline == null) {
 			return "";
 		}
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		return sdf.format(deadline);
 	}
+
 
 	public static String checkImportance(String param, String value) {
 		if(param.equals("") && value.equals("3")) {
@@ -38,16 +40,6 @@ public class HTMLUtils {
 		}else {
 			return "";
 		}
-	}
-
-	public static String formatDeadline(Date deadline) {
-		Todo todo = new Todo(0, null, null, 0, deadline);
-		deadline = todo.getDeadline();
-		if(deadline == null) {
-			return "";
-		}
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		return sdf.format(deadline);
 	}
 
 }
