@@ -114,13 +114,24 @@ public class EntryServlet extends HttpServlet {
 		}
 
 		//日付の形式yyyy/mm/ddだけにする
-		try {
-			DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
-		    df.setLenient(false);
-		    df.format(df.parse(deadline));//Exception
-		} catch (ParseException e) {
-			errors.add("期限は「YYYY/MM/DD」形式で入力してください。");
+		if(!deadline.equals("")) {
+
+		    try {
+		    	DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+
+		    	df.setLenient(false);
+				String s = df.format(df.parse(deadline));
+
+				if(deadline.equals(s)) {
+
+				}else {
+					errors.add("期限は「YYYY/MM/DD」形式で入力してください。");
+				}
+			} catch (ParseException e) {
+				errors.add("期限は「YYYY/MM/DD」形式で入力してください。");
+			}
 		}
+
 
 		//重要度1-3だけにする
 		if(!(importance.equals("1")) && !(importance.equals("2")) && !(importance.equals("3"))) {

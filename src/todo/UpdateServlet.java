@@ -122,7 +122,7 @@ public class UpdateServlet extends HttpServlet {
 			ps.setString(1, title);
 			ps.setString(2, detail);
 			ps.setString(3, importance);
-			ps.setString(4, deadline);
+			ps.setString(4, deadline.equals("")? null : deadline);
 			ps.setString(5, todoId);
 
 			//UPDATE命令を実行
@@ -146,7 +146,6 @@ public class UpdateServlet extends HttpServlet {
 			}
 		}
 
-
 	}
 
 	private List<String> validate(String todoId, String title, String importance, String deadline) {
@@ -169,10 +168,18 @@ public class UpdateServlet extends HttpServlet {
 
 		//日付の形式yyyy/mm/ddだけにする
 		if(!deadline.equals("")) {
-			DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
-		    df.setLenient(false);
-			try {
-			    df.parseObject(deadline);
+
+		    try {
+		    	DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+
+		    	df.setLenient(false);
+				String s = df.format(df.parse(deadline));
+
+				if(deadline.equals(s)) {
+
+				}else {
+					errors.add("期限は「YYYY/MM/DD」形式で入力してください。");
+				}
 			} catch (ParseException e) {
 				errors.add("期限は「YYYY/MM/DD」形式で入力してください。");
 			}
