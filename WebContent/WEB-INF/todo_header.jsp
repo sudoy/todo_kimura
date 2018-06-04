@@ -28,26 +28,7 @@
 		</nav>
 
 		<div class="container">
-			<div id="alert" class="alert alert-success fade in">
-				<a href="#" class="close" data-dismiss="alert"
-					aria-label="close">×</a>
-				<b class="text-success">完了しました！</b>
-				<ul>
-					<li class="text-success">No.27のTodoを更新しました。</li>
-				</ul>
-			</div>
+			<jsp:include page="success.jsp" />
+			<jsp:include page="error.jsp" />
 
-			<c:if test="${errors.size() > 0}">
-				<div id="alert" class="alert alert-danger fade in">
-					<a href="#" class="close" data-dismiss="alert"
-						aria-label="close">×</a>
-					<b class="text-danger">エラーが発生しました！</b>
-
-					<ul>
-						<c:forEach var="error" items="${errors}">
-							<li>${errors}</li>
-						</c:forEach>
-					</ul>
-				</div>
-			</c:if>
 		</div>

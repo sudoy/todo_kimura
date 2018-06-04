@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import todo.utils.DBUtils;
 
@@ -34,6 +35,7 @@ public class EntryServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		req.setCharacterEncoding("utf-8");
+		HttpSession session = req.getSession();
 
 		String title = req.getParameter("title");
 		String detail = req.getParameter("detail");
@@ -46,9 +48,7 @@ public class EntryServlet extends HttpServlet {
 
 		//Listにエラーをaddした回数が一回以上の場合の処理
 		if(errors.size() > 0) {
-
-			//Listに入れたエラーメッセージをjspに渡す
-			req.setAttribute("errors", errors);
+			session.setAttribute("errors", errors);
 
 			getServletContext().getRequestDispatcher("/WEB-INF/entry.jsp")
 				.forward(req, resp);
@@ -81,6 +81,11 @@ public class EntryServlet extends HttpServlet {
 			//INSERT命令を実行
 			ps.executeUpdate();
 
+			List<String> successes = new ArrayList<>();
+			successes.add("登録しました。");
+			session.setAttribute("successes", successes);
+
+			resp.sendRedirect("index.html");
 		}catch(Exception e){
 			throw new ServletException(e);
 		}finally{
@@ -91,8 +96,6 @@ public class EntryServlet extends HttpServlet {
 			}catch(Exception e){
 			}
 		}
-		//処理後は入力フォームにリダイレクト
-		resp.sendRedirect("index.html");
 
 	}
 
