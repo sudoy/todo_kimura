@@ -20,12 +20,17 @@ import javax.servlet.http.HttpSession;
 
 import todo.beans.Todo;
 import todo.utils.DBUtils;
+import todo.utils.Utils;
 
 @WebServlet("/update.html")
 public class UpdateServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+
+		if(!Utils.checkLogin(req, resp)) {
+			return;
+		}
 
 		String id = req.getParameter("todoId");
 
@@ -84,6 +89,10 @@ public class UpdateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
+		if(!Utils.checkLogin(req, resp)) {
+			return;
+		}
+
 		req.setCharacterEncoding("utf-8");
 		HttpSession session = req.getSession();
 
@@ -129,7 +138,7 @@ public class UpdateServlet extends HttpServlet {
 			ps.executeUpdate();
 
 			List<String> successes = new ArrayList<>();
-			successes.add("登録しました。");
+			successes.add("更新しました。");
 			session.setAttribute("successes", successes);
 
 			//処理後は入力フォームにリダイレクト

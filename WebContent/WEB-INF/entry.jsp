@@ -2,6 +2,8 @@
 <%@ page import="todo.utils.HTMLUtils" %>
 
 <jsp:include page="todo_header.jsp" />
+<jsp:include page="success.jsp" />
+<jsp:include page="error.jsp" />
 
 	<div class="container">
 		<b>登録フォーム</b>

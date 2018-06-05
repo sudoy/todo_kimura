@@ -16,12 +16,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import todo.beans.Todo;
 import todo.utils.DBUtils;
+import todo.utils.Utils;
 
 @WebServlet("/index.html")
 public class IndexServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+
+		if(!Utils.checkLogin(req, resp)) {
+			return;
+		}
 
 		Connection con = null;
 		PreparedStatement ps = null;

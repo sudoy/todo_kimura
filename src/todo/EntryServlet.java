@@ -17,12 +17,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import todo.utils.DBUtils;
+import todo.utils.Utils;
 
 @WebServlet("/entry.html")
 public class EntryServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+
+		if(!Utils.checkLogin(req, resp)) {
+			return;
+		}
 
 		//entry.jspへforward
 		getServletContext().getRequestDispatcher("/WEB-INF/entry.jsp")
@@ -33,6 +38,10 @@ public class EntryServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+
+		if(!Utils.checkLogin(req, resp)) {
+			return;
+		}
 
 		req.setCharacterEncoding("utf-8");
 		HttpSession session = req.getSession();
